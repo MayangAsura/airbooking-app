@@ -1,1 +1,1 @@
-export const PROD_URL = process.env.SERVER_URL || "https://localhost:8080"
+export const PROD_URL = process.env.PROD_URL || "https://localhost:8080/api"
