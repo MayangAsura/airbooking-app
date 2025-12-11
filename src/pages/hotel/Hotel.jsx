@@ -25,9 +25,9 @@ const Hotel = () => {
   const [openModal, setOpenModal] = useState(false);
   
   const {data, loading, error} = useFetch(`/hotels/${id}`)
-  console.log('data', data)
-
+  
   const {dates, options} = useContext(SearchContext)
+  console.log('data', data, dates, id, options)
   const { user } = useContext(AuthContext);
   
   const navigate = useNavigate()
@@ -107,7 +107,7 @@ const Hotel = () => {
               onClick={() => handleMove("l")}
             />
             <div className="sliderWrapper">
-              <img src={data.photos[slideNumber]} alt="" className="sliderImg" />
+              <img src={data.data.photos[slideNumber]} alt="" className="sliderImg" />
             </div>
             <FontAwesomeIcon
               icon={faCircleArrowRight}
@@ -118,23 +118,23 @@ const Hotel = () => {
         )}
         <div className="hotelWrapper">
           <button className="bookNow">Reserve or Book Now!</button>
-          <h1 className="hotelTitle">{data.hotel.name} </h1>
+          <h1 className="hotelTitle">{data.data.name} </h1>
           <div className="hotelAddress">
             <FontAwesomeIcon icon={faLocationDot} />
-            <span>{data.hotel.address}</span>
+            <span>{data.data.address}</span>
           </div>
           <span className="hotelDistance">
-            Excellent location – {data.hotel.distance}m from center
+            Excellent location – {data.data.distance}m from center
           </span>
           <span className="hotelPriceHighlight">
             Book a stay over $114 at this property and get a free airport taxi
           </span>
           <div className="hotelImages">
-            {data.hotel.photos?.map((photo, i) => (
+            {data.data.photos?.map((photo, i) => (
               <div className="hotelImgWrapper" key={i}>
                 <img
                   onClick={() => handleOpen(i)}
-                  src={photo.src}
+                  src={photo}
                   alt=""
                   className="hotelImg"
                 />
@@ -143,18 +143,18 @@ const Hotel = () => {
           </div>
           <div className="hotelDetails">
             <div className="hotelDetailsTexts">
-              <h1 className="hotelTitle">{data.hotel.name} </h1>
+              <h1 className="hotelTitle">{data.data.name} </h1>
               <p className="hotelDesc">
-                {data.hotel.desc}
+                {data.data.description}
               </p>
             </div>
             <div className="hotelDetailsPrice">
               <h1>Perfect for a 9-night stay!</h1>
               <span>
-                {data.hotel.address}
+                {data.data.address}
               </span>
               <h2>
-                <b>{days * data.hotel.cheapestPrice * options.room} </b> ({days} nights)
+                <b>{days * data.data.cheapestPrice * options.room} </b> ({days} nights)
               </h2>
               <button onClick={handleClick}>Reserve or Book Now!</button>
             </div>

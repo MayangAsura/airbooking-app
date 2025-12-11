@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react"
 import axios from 'axios'
+import LOCAL_URL from '../api/local'
 
 export const useFetch = (url) => {
     const [data, setData] = useState([])
@@ -10,7 +11,7 @@ export const useFetch = (url) => {
         const fetchData = async ()=>{
             setLoading(true)
             try{
-                const res = await axios.get(url)
+                const res = await axios.get(LOCAL_URL + url)
                 console.log(res)
                 setData(res.data)
             }catch(err){
