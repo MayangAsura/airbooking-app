@@ -4,6 +4,7 @@ import { LOCAL_URL } from "../api/local"
 import { PROD_URL } from "../api/production"
 
 const BASE_URL = process.env.SERVER_MODE === 'production'? PROD_URL : LOCAL_URL
+console.log(BASE_URL)
 
 export const useFetch = (url) => {
     const [data, setData] = useState([])
