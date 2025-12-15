@@ -1,1 +1,1 @@
-export const PROD_URL = process.env.PROD_URL
+export const PROD_URL = process.env.REACT_APP_PROD_URL

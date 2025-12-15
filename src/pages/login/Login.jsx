@@ -12,7 +12,7 @@ const Login = () => {
     password: undefined,
   });
 
-  const BASE_URL = process.env.SERVER_MODE === 'production'? PROD_URL : LOCAL_URL
+  const BASE_URL = process.env.REACT_APP_SERVER_MODE === 'production'? PROD_URL : LOCAL_URL
 
   const { user, loading, error, dispatch } = useContext(AuthContext);
 
