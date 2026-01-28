@@ -3,8 +3,13 @@ import axios from 'axios'
 import { LOCAL_URL } from "../api/local"
 import { PROD_URL } from "../api/production"
 
+<<<<<<< HEAD
 const BASE_URL = process.env.REACT_APP_SERVER_MODE === 'production'? PROD_URL : LOCAL_URL
 console.log('BASE_URL', process.env.REACT_APP_SERVER_MODE, BASE_URL)
+=======
+const BASE_URL = process.env.SERVER_MODE === 'production'? PROD_URL : LOCAL_URL
+console.log(BASE_URL)
+>>>>>>> e5f759321a483f6192d23a70195b823dfa1e38fc
 
 export const useFetch = (url) => {
     
