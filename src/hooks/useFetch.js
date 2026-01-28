@@ -4,6 +4,7 @@ import { LOCAL_URL } from "../api/local"
 import { PROD_URL } from "../api/production"
 
 const BASE_URL = process.env.REACT_APP_SERVER_MODE === 'production'? PROD_URL : LOCAL_URL
+console.log('BASE_URL', process.env.REACT_APP_SERVER_MODE, BASE_URL)
 
 export const useFetch = (url) => {
     
@@ -15,7 +16,9 @@ export const useFetch = (url) => {
         const fetchData = async ()=>{
             setLoading(true)
             try{
-                const res = await axios.get(BASE_URL + url)
+                const res = await axios.get(BASE_URL + url, {
+                    withCredentials: true
+                })
                 console.log(res)
                 setData(res.data)
             }catch(err){
